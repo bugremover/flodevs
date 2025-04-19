@@ -1,0 +1,26 @@
+server:
+  port: 8080
+  servlet:
+    context-path: /api
+
+spring:
+  data:
+    mongodb:
+      uri: ${SPRING_DATA_MONGODB_URI}
+  profiles:
+    active: prod
+
+logging:
+  level:
+    root: INFO
+    com.synapz: DEBUG
+  file:
+    name: logs/application.log
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"
+    file: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"
+
+security:
+  jwt:
+    secret: ${JWT_SECRET}
+    expiration: 86400000 # 24 hours 

@@ -1,0 +1,16 @@
+[Unit]
+Description=Synapz Backend Service
+After=network.target
+
+[Service]
+User=your-user
+WorkingDirectory=/opt/synapz
+ExecStart=/usr/bin/java -jar synapz-backend.jar
+Environment="SPRING_PROFILES_ACTIVE=prod"
+Environment="SPRING_DATA_MONGODB_URI=mongodb://localhost:27017/synapz"
+Environment="JWT_SECRET=your-secret-key-here"
+SuccessExitStatus=143
+Restart=always
+
+[Install]
+WantedBy=multi-user.target 
